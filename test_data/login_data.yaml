@@ -1,0 +1,6 @@
+# 登录测试数据
+test_login:
+  - username: "cycuim"
+    password: "uV*Z('m']2J)"
+  - username: "cycuim"
+    password: "uV*Z('m']2J),R"
