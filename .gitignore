@@ -1,0 +1,43 @@
+# 忽略测试报告目录（包含 HTML 报告、截图）
+reports/
+
+# 忽略日志目录（包含自动化日志）
+logs/
+
+# ========== 以下是 UI 自动化框架常用忽略项（建议一并添加） ==========
+# 虚拟环境目录（必加，避免提交 venv）
+.venv/
+venv/
+env/
+ENV/
+
+# Python 编译文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 操作系统临时文件
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDE 配置文件（Pycharm/VSCode）
+.idea/
+.vscode/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# 本地配置文件（避免提交个性化配置）
+config/local_config.yaml
+
+# 驱动文件（如 chromedriver.exe，无需提交）
+driver/*.exe
+driver/*.zip
+
+# 测试数据中敏感信息（可选，如包含账号密码的 yaml）
+# test_data/sensitive_data.yaml
