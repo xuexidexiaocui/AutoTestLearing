@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 import pytest
 from utils.logger import logger
 
@@ -7,7 +8,10 @@ if __name__ == "__main__":
     report_dir = os.path.join(os.path.dirname(__file__), "reports")
     if not os.path.exists(report_dir):
         os.makedirs(report_dir)
-    report_path = os.path.join(report_dir, "test_report.html")
+    # 时间格式：年-月-日_时-分-秒（避免空格/特殊字符）
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    # 拼接文件名：例如 2026-03-12_15-30-20_test_report.html
+    report_path = os.path.join(report_dir, f"{timestamp}_test_report.html")
 
     # 构造 pytest 命令参数
     pytest_args = [
@@ -24,4 +28,5 @@ if __name__ == "__main__":
     # 执行测试用例
     logger.info("开始执行测试用例...")
     pytest.main(pytest_args)
+
     logger.info(f"测试报告已生成：{report_path}")

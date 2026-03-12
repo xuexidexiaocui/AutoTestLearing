@@ -1,10 +1,12 @@
 # 核心依赖
 selenium==4.15.2          # Web 自动化核心库
-Appium-Python-Client==2.11.1  # 移动端自动化（可选）
+Appium-Python-Client==2.11.1  # 移动端自动化
 pytest==7.4.3             # 测试用例管理框架
 pytest-html==4.0.2        # 生成 HTML 测试报告
 pytest-rerunfailures==12.0 # 失败用例重跑
 PyYAML==6.0.1             # 读取 YAML 配置文件
 logging==0.4.9.6          # 日志管理
-allure-pytest==2.13.2     # 生成更美观的 Allure 报告（可选）
 webdriver-manager==4.0.1  # 自动管理浏览器驱动（无需手动下载）
+allure-pytest==2.13.2        # Allure 与 pytest 集成
+allure-python-commons==2.13.2
+psutil==5.9.8                 # 辅助检查 Appium 服务

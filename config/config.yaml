@@ -7,3 +7,13 @@ web:
 test:
   rerun_times: 1                # 失败重跑次数
   screenshot_on_failure: True   # 失败时自动截图
+
+app:
+  platform_name: "Android"       # 平台（Android/iOS）
+  platform_version: "13"         # 手机系统版本
+  device_name: "Pixel 7"         # 设备名（adb devices 查看）
+  app_package: "com.android.settings"  # 被测APP包名（示例：设置）
+  app_activity: ".Settings"      # 被测APP启动页
+  udid: "1234567890ABCDEF"       # 设备UDID（adb devices 查看）
+  implicit_wait: 10
+  appium_server: "http://127.0.0.1:4723/wd/hub"  # Appium 服务地址
