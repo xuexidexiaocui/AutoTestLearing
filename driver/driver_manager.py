@@ -1,11 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
+from appium import webdriver as appium_webdriver
 from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
-# 注释掉自动下载的包，改用手动指定路径
-# from webdriver_manager.chrome import ChromeDriverManager
-# from webdriver_manager.firefox import GeckoDriverManager
-# from webdriver_manager.microsoft import EdgeChromiumDriverManager
 from utils.read_yaml import get_config
 from utils.logger import logger
 
@@ -54,11 +51,45 @@ class DriverManager:
         return cls._driver
 
     @classmethod
+    def get_app_driver(cls):
+        if cls._app_driver is None:
+            config = get_config()["app"]
+            # 移动端驱动配置（Desired Capabilities）
+            desired_caps = {
+                "platformName": config["platform_name"],
+                "platformVersion": config["platform_version"],
+                "deviceName": config["device_name"],
+                "appPackage": config["app_package"],
+                "appActivity": config["app_activity"],
+                "udid": config["udid"],
+                "noReset": True,  # 不重置APP数据
+                "automationName": "UiAutomator2",  # Android 驱动
+                "unicodeKeyboard": True,  # 支持中文输入
+                "resetKeyboard": True
+            }
+            # 连接 Appium 服务，创建驱动
+            cls._app_driver = appium_webdriver.Remote(
+                command_executor=config["appium_server"],
+                desired_capabilities=desired_caps
+            )
+            cls._app_driver.implicitly_wait(config["implicit_wait"])
+            logger.info("✅ 移动端驱动初始化成功")
+        return cls._app_driver
+    @classmethod
     def quit_driver(cls):
         """关闭驱动（调试模式下不关闭）"""
         if not cls.DEBUG_MODE and cls._driver is not None:
             cls._driver.quit()
             cls._driver = None
+            logger.info("驱动已关闭")
+        elif cls.DEBUG_MODE:
+            logger.info("调试模式：驱动未关闭，浏览器将保留")
+
+    @classmethod
+    def quit_app_driver(cls):
+        if not cls.DEBUG_MODE and cls._app_driver is not None:
+            cls._app_driver.quit()
+            cls._app_driver = None
             logger.info("驱动已关闭")
         elif cls.DEBUG_MODE:
             logger.info("调试模式：驱动未关闭，浏览器将保留")
