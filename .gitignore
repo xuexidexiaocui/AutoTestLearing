@@ -40,4 +40,4 @@ driver/*.exe
 driver/*.zip
 
 # 测试数据中敏感信息（可选，如包含账号密码的 yaml）
-# test_data/sensitive_data.yaml
+test_data/login_data.yaml
