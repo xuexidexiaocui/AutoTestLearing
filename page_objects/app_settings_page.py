@@ -1,6 +1,11 @@
+import allure
+import pytest
 from appium.webdriver.common.appiumby import AppiumBy
 from page_objects.app_base_page import AppBasePage
-
+# 给移动端用例打 @pytest.mark.app 标签
+@allure.epic("移动端自动化")
+@allure.feature("设置APP")
+@pytest.mark.app  # 移动端用例标签
 class SettingsPage(AppBasePage):
     """安卓设置页面"""
     # 元素定位器（移动端常用 ID/XPATH/ACCESSIBILITY_ID）
