@@ -1,6 +1,6 @@
 import pytest
 import os
-from page_objects.login_page import LoginPage
+from page_objects.web_pages.login_page import LoginPage
 from utils.read_yaml import read_yaml
 
 
@@ -10,7 +10,8 @@ def get_login_data():
     # __file__ = 当前文件（test_login.py）路径
     # os.path.dirname(__file__) = test_cases/ 目录
     # os.path.dirname(上一级) = 项目根目录
-    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    first_root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    root_dir = os.path.dirname(first_root_dir)
     data_path = os.path.join(root_dir, "test_data", "login_data.yaml")
 
     # 2. 打印路径 + 校验文件是否存在（关键排查步骤）
@@ -59,3 +60,5 @@ class TestLogin:
         # （可选）添加断言（根据你的业务调整）
         # 示例：登录后检查页面标题（替换成你的业务断言）
         # assert "登录成功" in self.login_page.driver.title
+if __name__ == '__main__':
+    print(read_yaml())
