@@ -1,6 +1,6 @@
 # 全局配置
 web:
-  url: "https://feilian.isoftstone.com:10443"  # 测试网址（替换为你的目标网址）
+  url: "https://feilian.isoftstone.com:10443/login"  # 测试网址（替换为你的目标网址）
   browser: "chrome"             # 浏览器类型：chrome/firefox/edge
   implicit_wait: 20             # 隐式等待时间（秒）
   page_load_timeout: 300        # 页面加载超时（秒）

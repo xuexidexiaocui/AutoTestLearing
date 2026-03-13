@@ -1,9 +1,13 @@
 import time
 
+import allure
+import pytest
 from selenium.webdriver.common.by import By
 from page_objects.base_page import BasePage
 from utils.read_yaml import get_config
-
+@allure.epic("Web 自动化")
+@allure.feature("登录功能")
+@pytest.mark.web  # Web 用例标签
 class LoginPage(BasePage):
     """登录页面：封装登录页的元素和操作"""
     # 元素定位器（统一管理，便于维护）
@@ -16,7 +20,7 @@ class LoginPage(BasePage):
     def __init__(self):
         super().__init__()
         self.config = get_config()
-        self.login_url = self.config["web"]["url"] + "/login"  # 登录页 URL
+        self.login_url = self.config["web"]["url"]  # 登录页 URL
 
     def open_login_page(self):
         """打开登录页面"""
