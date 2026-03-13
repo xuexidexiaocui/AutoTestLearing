@@ -3,7 +3,7 @@ import time
 import allure
 import pytest
 from selenium.webdriver.common.by import By
-from page_objects.base_page import BasePage
+from page_objects.web_pages.base_page import BasePage
 from utils.read_yaml import get_config
 @allure.epic("Web 自动化")
 @allure.feature("登录功能")

@@ -1,7 +1,7 @@
 import allure
 import pytest
 from appium.webdriver.common.appiumby import AppiumBy
-from page_objects.app_base_page import AppBasePage
+from page_objects.app_pages.app_base_page import AppBasePage
 # 给移动端用例打 @pytest.mark.app 标签
 @allure.epic("移动端自动化")
 @allure.feature("设置APP")
